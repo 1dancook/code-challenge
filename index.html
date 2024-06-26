@@ -10,19 +10,13 @@
     background-color: #1e293b;
     color: #ffffff;
     line-height: 1.6;
-    margin: 0;
-    padding: 20px;
     font-family: Courier New, monospace;
-    font-size: 1.2rem;
-    box-shadow: inset 0px 0px 150px #00ffff44;
-  }
-  button {
+    font-size: calc(15px + 0.390625vw);
+    box-shadow: inset 0px 0px 150px #00ffff24;
+    margin: 0;
+    overflow-x: hidden;
   }
 
-  div.main {
-    max-width: 60ch;
-    margin: 0 auto;
-  }
 
   h1, h2, h3, h4, h5, h6 {
     color: white; /* Cyan color for headings */
@@ -39,7 +33,7 @@
       0 0 100px #00ffff;
   }
 
-  h1 { font-size: 2em; }
+  h1 { font-size: 3em; }
 
   h2 { font-size: 1.75em; }
 
@@ -56,24 +50,26 @@
   pre {
     background-color: #4a044e;
     color: #f5d0fe;
-    padding: 10px;
-    padding-bottom: 20px;
-    border-radius: 8px;
+    border-radius: 3px;
     border: 1px solid #e879f9;
     overflow-x: auto;
     box-shadow: 0px 0px 10px #d946ef;
-    white-space: pre-wrap;       /* CSS3 */
-    white-space: -moz-pre-wrap;  /* Firefox */
-    white-space: -pre-wrap;      /* Opera <7 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    word-wrap: break-word;       /* IE */
+    padding: 1em;
 
   }
+
   pre > code {
-    box-shadow: none
+    box-shadow: none;
+    padding: 0;
   }
 
-  ul, ol { margin: 1em 0; padding-left: 20px; }
+  pre, code {
+    white-space: pre-line;
+    word-wrap: break-word;       /* IE */
+  }
+
+
+  ul, ol { margin: 1em 0; padding-left: 20px; margin-left: 1em;}
 
   li { margin-bottom: 0.5em; }
 
@@ -94,17 +90,34 @@
   img {
     border-radius: 5px;
     border: 1px solid cyan;
-    width: 100%;
     box-shadow: 0px 0px 20px cyan;
+    width: 300px;
+    max-width: 70%;
+
   }
+
+
+  /* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 1024px) {
+  img {
+    width: 400px;
+  }
+}
+
+  @media only screen and (min-width: 1280px) {
+  img {
+    width: 500px;
+  }
+  }
+
 
   .header {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
-    width: 60ch;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
     color: #ffffff;
     margin: 0 auto;
 
@@ -116,14 +129,7 @@
       0 0 100px #00ffff;
   }
 
-  .header h1 {
-    font-size: 4em;
-    text-align: left;
-    border: none;
-    color: white;
-  }
 
-  .stage {display: none; margin-bottom: 4em;}
 
   button {
     font-family: courier new;
@@ -131,7 +137,9 @@
     border: 2px solid #00ffFF;
     border-radius: 5px;
     padding: 0.4em 1em;
-    font-size: 1.5em;
+    font-size: 1.1em;
+    margin: 0 auto;
+    display: block;
     text-shadow: 
         0 0 10px #00ffff, 
         0 0 30px #00ffff, 
@@ -161,135 +169,172 @@
     }
 
 
+  .stage {
+    display: none;
+    margin-top: 100vh;
+    padding-bottom: 20vh;
+    overflow-x: hidden;
+  }
+
+  .stage:first-child {
+    margin-top: 0;
+  }
+
+  .content {
+    width: calc(100% - 2em);
+    max-width: 60ch;
+    margin: 0 auto;
+    padding: 0 1em;
+  }
+
+  .visible {display:block}
+
+  .header > h2 {margin-bottom: 0.3em;}
+  .header > h1 {
+    margin-top: 0;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>CODE<br>CHALLENGE</h1>
-  <p style="font-size: 2em;">Fat Tony's pizza restaurant gets hacked, and it's your job to help!</p>
-  <button onclick="showStage('stage1')" style="margin-top: 2em;">Continue...</button>
+<div class="stage visible">
+  <div class="header">
+    <h1>CODE CHALLENGE</h1>
+    <p style="font-size: 1.3em; padding: 0 3em; text-align: center">Fat Tony's pizza restaurant gets hacked, and it's your job to help!</p>
+    <button onclick="showStage('stage1')" style="margin-top: 2em;">Continue...</button>
+  </div>
+  <div class="content">
+  </div>
 </div>
 
-<div class="main">
 
 <div class="stage" id="stage1">
   <div class="header">
-    <h1>Stage 1:<br>A Bad Sign</h1>
-  <img src="./pizzashop.png" alt="sign" />
+    <h2>Stage 1</h2>
+    <h1> A Bad Sign</h1>
+    <img src="./pizzashop.png" alt="sign" />
   </div>
-  <h3>What Happened</h3>
-  <p>It’s 2034, and Fat Tony owns a pizza restaurant. He has the best pizza in town. On a cold Friday morning, Fat Tony goes to his shop to open it for the day. He discovers that his restaurant was hacked! The digital sign with the name of the restaurant was different and <em>strange</em>! It said:</p>
-  <pre><code style="font-size: 1.5em; text-align:center">#h3 *3!# =+$$a</code></pre>
-  <p>But the hackers weren’t very smart. They dropped a note with all of the letters that they swapped:</p>
-  <pre class="text"><code>
-  Sign Letter Swap Map
-  &nbsp;&nbsp;&nbsp;&nbsp;e --&gt; 3
-  &nbsp;&nbsp;&nbsp;&nbsp;z --&gt; $
-  &nbsp;&nbsp;&nbsp;&nbsp;j --&gt; %
-  &nbsp;&nbsp;&nbsp;&nbsp;i --&gt; +
-  &nbsp;&nbsp;&nbsp;&nbsp;p --&gt; =
-  &nbsp;&nbsp;&nbsp;&nbsp;l --&gt; (
-  &nbsp;&nbsp;&nbsp;&nbsp;t --&gt; #
-  &nbsp;&nbsp;&nbsp;&nbsp;b --&gt; *
-  &nbsp;&nbsp;&nbsp;&nbsp;s --&gt; !
-  </code></pre>
 
-  <h3 id="your-task">Your Task</h3>
-  <p>Can you write and run code on your computer? If you can that's great -- get started! If you can't, try <a target="_blank" href="https://onecompiler.com/">this website</a>.</p>
-  <p>Help Fat Tony fix his sign. Write some code that will change the <em>strange restaurant name</em> back to normal. Don’t forget that the first letter in any word should be <em>uppercase</em>.</p>
+  <div class="content">
+    <h3>What Happened</h3>
+    <p>It’s 2034, and Fat Tony owns a pizza restaurant. He has the best pizza in town. On a cold Friday morning, Fat Tony goes to his shop to open it for the day. He discovers that his restaurant was hacked! The digital sign with the name of the restaurant was different and <em>strange</em>! It said:</p>
+    <pre><code style="text-align:center">#h3 *3!# =+$$a</code></pre>
+    <p>But the hackers weren’t very smart. They dropped a note with all of the letters that they swapped:</p>
+    <pre class="text"><code>Sign Letter Swap Map
+    &nbsp;&nbsp;&nbsp;&nbsp;e --&gt; 3
+    &nbsp;&nbsp;&nbsp;&nbsp;z --&gt; $
+    &nbsp;&nbsp;&nbsp;&nbsp;j --&gt; %
+    &nbsp;&nbsp;&nbsp;&nbsp;i --&gt; +
+    &nbsp;&nbsp;&nbsp;&nbsp;p --&gt; =
+    &nbsp;&nbsp;&nbsp;&nbsp;l --&gt; (
+    &nbsp;&nbsp;&nbsp;&nbsp;t --&gt; #
+    &nbsp;&nbsp;&nbsp;&nbsp;b --&gt; *
+    &nbsp;&nbsp;&nbsp;&nbsp;s --&gt; !
+    </code></pre>
 
-  <h3 id="an-example">A Test Example</h3>
-  <p>You can use this example to test your code:</p>
-  <ul>
-  <li>Strange: <code>an 3xam=(3 !+gn</code></li>
-  <li>Normal: <code>An Example Sign</code></li>
-  </ul>
-  <button onclick="showStage('stage2')" style="margin-top: 4em;">Continue...</button>
+    <h3 id="your-task">Your Task</h3>
+    <p>Can you write and run code on your computer? If you can that's great -- get started! If you can't, try <a target="_blank" href="https://onecompiler.com/">this website</a>.</p>
+    <p>Help Fat Tony fix his sign. Write some code that will change the <em>strange restaurant name</em> back to normal. Don’t forget that the first letter in any word should be <em>uppercase</em>.</p>
+
+    <h3 id="an-example">A Test Example</h3>
+    <p>You can use this example to test your code:</p>
+    <ul>
+    <li>Strange: <code>an 3xam=(3 !+gn</code></li>
+    <li>Normal: <code>An Example Sign</code></li>
+    </ul>
+    <button onclick="showStage('stage2')" style="margin-top: 4em;">Continue...</button>
+  </div>
 </div>
 
 
 <div class="stage" id="stage2">
   <div class="header">
-  <h1>Stage 2:<br>Can't Login</h1>
-  <img src="./login.png" alt="login" />
+    <h2>Stage 2</h2>
+    <h1>Can't Login</h1>
+    <img src="./login.png" alt="login" />
   </div>
-  <h3>What Happened</h3>
-  <p>After fixing the sign, Fat Tony enters the restaurant and turns on the computer for making pizza orders. It makes some strange sounds and displays a special password screen. It was also hacked! Fat Tony tries his normal password, but it doesn’t work.</p>
-  <p>He clicks on a small button that says, “help” and it gives him this message:</p>
-  <pre><code>
-  To login, use your restaurant name as the password.
-  All of the characters have to be changed.
 
-  &nbsp;&nbsp;&nbsp;&nbsp;a --&gt; b
-  &nbsp;&nbsp;&nbsp;&nbsp;b --&gt; c
-  &nbsp;&nbsp;&nbsp;&nbsp;z --&gt; {
-  &nbsp;&nbsp;&nbsp;&nbsp;Z --&gt; [
-  &nbsp;&nbsp;&nbsp;&nbsp;and etc.</code></pre>
-  <p>Why are the hackers giving password hints? This is very strange.</p>
+  <div class="content">
+    <h3>What Happened</h3>
+    <p>After fixing the sign, Fat Tony enters the restaurant and turns on the computer for making pizza orders. It makes some strange sounds and displays a special password screen. It was also hacked! Fat Tony tries his normal password, but it doesn’t work.</p>
+    <p>He clicks on a small button that says, “help” and it gives him this message:</p>
+    <pre><code>To login, use your restaurant name as the password.
+    All of the characters have to be changed.
 
-  <h3 id="your-task-1">Your Task</h3>
-  <p>Help Fat Tony login to his computer. Write some code that will
-  generate a <em>password</em> from the <em>restaurant name</em>.</p>
+    &nbsp;&nbsp;&nbsp;&nbsp;a --&gt; b
+    &nbsp;&nbsp;&nbsp;&nbsp;b --&gt; c
+    &nbsp;&nbsp;&nbsp;&nbsp;z --&gt; {
+    &nbsp;&nbsp;&nbsp;&nbsp;Z --&gt; [
+    &nbsp;&nbsp;&nbsp;&nbsp;and etc.</code></pre>
+    <p>Why are the hackers giving password hints? This is very strange.</p>
 
-  <h3 id="an-example-1">A Test Example</h3>
-  <p>Here is an example you can use to test your code:</p>
-  <ul>
-  <li>Original text: <code>A Password</code></li>
-  <li>Generated Password: <code>A!Qbttxpse</code></li>
-  </ul>
+    <h3 id="your-task-1">Your Task</h3>
+    <p>Help Fat Tony login to his computer. Write some code that will
+    generate a <em>password</em> from the <em>restaurant name</em>.</p>
 
-  <button onclick="showStage('stage3')" style="margin-top: 4em;">Continue...</button>
+    <h3 id="an-example-1">A Test Example</h3>
+    <p>Here is an example you can use to test your code:</p>
+    <ul>
+    <li>Original text: <code>A Password</code></li>
+    <li>Generated Password: <code>A!Qbttxpse</code></li>
+    </ul>
 
+    <button onclick="showStage('stage3')" style="margin-top: 4em;">Continue...</button>
+  </div>
 </div>
 
 <div class="stage" id="stage3">
+
   <div class="header">
-  <h1>Stage 3:<br>Secret Message</h1>
-  <img src="./email.png" alt="email" />
+    <h2>Stage 3</h2>
+    <h1>Secret Message</h1>
+    <img src="./email.png" alt="email" />
   </div>
 
-  <h3>What Happened</h3>
-  <p>After Fat Tony successfully logs into the computer, he finds an email
-  from the hackers. Here are the contents of the email:</p>
-  <pre><code>
-  We attached a zip file, but it has a password.
+  <div class="content">
+    <h3>What Happened</h3>
+    <p>After Fat Tony successfully logs into the computer, he finds an email
+    from the hackers. Here are the contents of the email:</p>
+    <pre><code>We attached a zip file, but it has a password.
 
-  Use the zip file name to generate a password in the same way you did to login.
+    Use the zip file name to generate a password in the same way you did to login.
 
-  But this one is a little different. Add two, but negate two for every other character.
+    But this one is a little different. Add two, but negate two for every other character.
 
-  You will find a very important top secret message inside. Do you know what 4x4x4 is?
+    You will find a very important top secret message inside. Do you know what 4x4x4 is?
 
-  Attachment: topsecret.zip</code></pre>
-  <h3 id="your-task-2">Your Task</h3>
-  <p>Fat Tony shared the zip file with you. Download it from here: <a href="./topsecret.zip" download="topsecret.zip">ZIP FILE</a></p>
-  <p>Help Fat Tony decode the message inside the zip file. First, <em>generate the password</em> for the zip file. Next, decode the
-  message inside.</p>
-  <h3 id="an-example-2">A Test Example</h3>
-  <p>Here is an example you can use to test your password generator for the zip file:</p>
-  <ul>
-  <li>Original Text: <code>aVeryStrongPassword</code></li>
-  <li>Generated Password: <code>cTgp{QvpqliNcquuqpf</code></li>
-  </ul>
+    Attachment: topsecret.zip</code></pre>
+    <h3 id="your-task-2">Your Task</h3>
+    <p>Fat Tony shared the zip file with you. Download it from here: <a href="./topsecret.zip" download="topsecret.zip">ZIP FILE</a></p>
+    <p>Help Fat Tony decode the message inside the zip file. First, <em>generate the password</em> for the zip file. Next, decode the
+    message inside.</p>
+    <h3 id="an-example-2">A Test Example</h3>
+    <p>Here is an example you can use to test your password generator for the zip file:</p>
+    <ul>
+    <li>Original Text: <code>aVeryStrongPassword</code></li>
+    <li>Generated Password: <code>cTgp{QvpqliNcquuqpf</code></li>
+    </ul>
 
-  <p>Here is an example encoded message that you can use to test your code:</p>
-  <ul>
-  <li>Encoded: <code>YW4gZXhhbXBsZQ==</code></li>
-  <li>Decoded: <code>an example</code></li>
-  </ul>
+    <p>Here is an example encoded message that you can use to test your code:</p>
+    <ul>
+    <li>Encoded: <code>YW4gZXhhbXBsZQ==</code></li>
+    <li>Decoded: <code>an example</code></li>
+    </ul>
 
-  <button onclick="showStage('end')" style="margin-top: 4em;">Continue...</button>
+    <button onclick="showStage('end')" style="margin-top: 4em;">Continue...</button>
+  </div>
 </div>
 
 
 <div class="stage" id="end">
   <div class="header">
-    <h1>The End:<br>A Message from Fat Tony</h1>
+    <h2>The End</h2>
+    <h1>A Message from Fat Tony</h1>
     <img src="./fattony.png" alt="email" />
   </div>
 
-  <div style="padding: 3em 0">
+  <div class="content">
   <p>"Hey you know, I gotta thank you for helping me out with my pizza restaurant. I don't know what's going on with kids these days but why do they gotta hack my shop just to get some pizza!?</p>
   <p>If you got any tips on how to beef up my security, I'm all ears. These cyberpunks are getting smarter every day. I even caught one of 'em trying to upload their own pizza topping! Can you believe that?
   <p>Anyway, I wish we had more folks like you around. As long as my shop is running, stop by anytime for some free pizza.</p>
@@ -297,7 +342,6 @@
   </div>
 </div>
 
-</div>
 
 
 
