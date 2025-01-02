@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Challenge</title>
+    <link rel="stylesheet" href="./resources/styles.css">
+</head>
+<body>
+
+
+<div class="stage" id="stage3">
+
+  <div class="header">
+    <h2>Stage 3</h2>
+    <h1>Secret Message</h1>
+    <img src="./resources/img/email.png" alt="email" />
+  </div>
+
+  <div class="content">
+    <h3>What Happened</h3>
+    <p>After Fat Tony successfully logs into the computer, he finds an email
+    from the hackers. Here are the contents of the email:</p>
+    <pre><code>We attached a zip file, but it has a password.
+
+    Use the zip file name to generate a password in the same way you did to login.
+
+    But this one is a little different. Don't do +1 for everything. Use this pattern: +2 -2 +2 -2 etc.
+
+    You will find a very important top secret message inside. Do you know what 4x4x4 is?
+
+    Attachment: topsecret.zip</code></pre>
+    <h3 id="your-task-2">Your Task</h3>
+    <p>Fat Tony shared the zip file with you. Download it from here: <a href="./resources/challenge03/topsecret.zip" download="topsecret.zip">ZIP FILE</a></p>
+    <p>Help Fat Tony decode the message inside the zip file. First, <em>generate the password</em> for the zip file. Next, decode the
+    message inside.</p>
+    <h3 id="an-example-2">A Test Example</h3>
+    <p>Here is an example you can use to test your password generator for the zip file:</p>
+    <ul>
+    <li>Original Text: <code>aVeryStrongPassword</code></li>
+    <li>Generated Password: <code>cTgp{QvpqliNcquuqpf</code></li>
+    </ul>
+
+    <p>Here is an example encoded message that you can use to test your code:</p>
+    <ul>
+    <li>Encoded: <code>YW4gZXhhbXBsZQ==</code></li>
+    <li>Decoded: <code>an example</code></li>
+    </ul>
+
+        <a href="./message01.html"><button style="margin-top: 2em;">Continue...</button></a>
+  </div>
+</div>
+
+
+</body>
+</html>
