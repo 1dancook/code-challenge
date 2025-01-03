@@ -18,11 +18,10 @@
 
   <div class="content">
     <h3>What Happened</h3>
-    <p>You feel quite happy about fixing Fat Tony's problems. Looks like your skills really come in handy! But just as you are about to leave the store, Fat Tony calls to you.</p>
+    <p>You feel quite happy about fixing Fat Tony's problems. Looks like your skills really come in handy! But just as you are about to leave the shop, Fat Tony calls to you.</p>
     <p><i>"Hey kid, I've had a problem with this punch card machine for a while. It takes me a long time to do the payroll because the time stamps are all mixed up. Do you mind taking a look at it?"</i></p>
     <p>You plug in your portable terminal and look at the output of the machine. While you look at it, Fat Tony explains some of the entries for employee 0028 from January:</p>
-    <pre><code>E_ID&nbsp;DATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;START&nbsp;&nbsp;&nbsp;&nbsp;END
-    0028 2034-01-19 11:55:00 15:59:00
+    <pre><code>0028 2034-01-19 11:55:00 15:59:00
     0028 2034-01-12 13:49:00 11:42:00
     0028 2034-01-21 22:19:00 09:02:00
     0028 2034-01-20 10:38:00 20:46:00
@@ -35,11 +34,11 @@
     </code></pre>
 
 
-    <p>Fat Tony explains with the example from 2034-01-09. The times are flipped, and so it should be <code>09:06:00 18:02:00</code>.</p>
-    <p>He also explains that, the <b>regular payment</b> is $12/hour and the <b>overtime payment</b> is $16/hour. Overtime is anything worked over 6 hours, and all hours on Sundays.</p>
-    <p>On 2034-01-09 employee 0028 worked 8 hours and 56 minutes, so 2 hours and 56 minutes overtime. </p>
+    <p>Fat Tony explains with the example from 2034-01-09. The row is <b>space separated</b> and has four values: the employee ID, the date, start time, and end time. The end time should always be later in the day than the start time. The problem with the data is that some of the times are flipped. For 2034-01-09, the two time values should be <code>09:06:00 18:02:00</code>.</p>
+    <p>He also explains that the <b>regular payment</b> is $12/hour and the <b>overtime payment</b> is $16/hour. Overtime is anything worked over 6 hours, and all hours on Sundays.</p>
+    <p>So, Fat Tony explains that on 2034-01-09 employee 0028 worked 8 hours and 56 minutes, so 2 hours and 56 minutes are overtime. </p>
 
-    <p>Before calculating the payment, Fat Tony also rounds the hours worked.</p>
+    <p>Before calculating the payment, Fat Tony also <b>rounds</b> the hours worked to the nearest whole number.</p>
     <p>He already calculated how much employee 0028 earned for the data above:</p>
     <ul>
     <li>The <b>normal hours</b> worked is 48, and the regular payment is $12/hour, so he earned $576.</li>
@@ -50,7 +49,7 @@
     <h3 id="your-task-1">Your Task</h3>
     <p>There are two more months of data that are bad. It seems the machine just can't be fixed, but you can write a program to help Fat Tony.</p>
     <p>Write a program to fix the data, then calculate how much the employee earned.</p>
-    <p>First, download the latest data from the machine available <a>HERE</a>.</p>
+    <p>First, download the latest data from the machine available <a href="./resources/challenge04/timelog.txt">HERE</a>.</p>
     <p>If you can't write code on your computer, you could use <a target="_blank" href="https://onecompiler.com/">this website</a>.</p>
     <p>How much does Fat Tony have to pay employee 0028?</p>
 
